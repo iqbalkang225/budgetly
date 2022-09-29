@@ -1,0 +1,35 @@
+@import './variables.css';
+
+*,
+::after,
+::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background-color: #ebddfa;
+  color: var(--clr-text);
+  font-size: 14px;
+  letter-spacing: .6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+h2{
+  color: var(--clr-white) ;
+}
+

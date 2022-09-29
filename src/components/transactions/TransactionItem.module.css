@@ -1,0 +1,42 @@
+.transaction-item{
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.3));
+    border-radius: var(--border-radius-md);
+    padding: .4rem 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: var(--box-shadow);
+    margin: .4rem 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.icon-box{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--clr-white);
+    margin-right: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    color: var(--clr-primary);
+    font-size: 20px;
+}
+
+.info{
+    margin-right: auto;
+}
+
+.title{
+    color: var(--clr-white);
+    text-transform: capitalize;
+}
+
+.date{
+    font-size: 10px;
+    color: var(--clr-text-dark);
+}

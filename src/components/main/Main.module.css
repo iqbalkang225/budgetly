@@ -1,0 +1,10 @@
+.title-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.title{
+    font-size: 20px;
+    color: var(--clr-white);
+}

@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useContext, useState } from 'react';
 import './App.css';
+import Header from './components/header/Header';
+import Main from './components/main/Main';
+import TransactionPopup from './components/transaction-popup/TransactionPopup';
+import TransactionContext from './store/transaction-context';
 
 function App() {
+
+
+  const [isModalOpen, setIsModalOpen] = useState(true)
+
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => setIsModalOpen(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <Main onClick = {openModal} />
+      
+      {
+        isModalOpen && <TransactionPopup onClick = {closeModal} />
+      }
+
     </div>
   );
 }

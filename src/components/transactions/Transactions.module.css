@@ -1,0 +1,9 @@
+.transactions{
+    overflow-y: scroll;
+    height: 335px;
+}
+
+.transaction-btns{
+    display: flex;
+    justify-content: space-around;
+}

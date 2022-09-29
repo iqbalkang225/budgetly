@@ -1,0 +1,36 @@
+@import '../../variables.css';
+
+.transaction-card{
+    background: linear-gradient(#7b4181, #353c76);
+    position: relative;
+    z-index: 1000;
+    width: 85%;
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    /* box-shadow: 0 0px 40px 5px rgba(255, 255, 255, 0.2); */
+}
+
+.transaction-card h2{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+}
+
+.form-control label{
+    margin-bottom: .4rem;
+}
+
+.form-control input,
+.form-control select{
+    padding: .6rem .2rem;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius-sm);
+}
+
+

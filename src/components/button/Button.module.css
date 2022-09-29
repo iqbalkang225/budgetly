@@ -1,0 +1,12 @@
+.button{
+    padding: .6rem;
+    border: none;
+    background: transparent;
+    color: var(--clr-white);
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: var(--gradient-hover) !important;
+}
