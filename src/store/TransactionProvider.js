@@ -3,35 +3,24 @@ import TransactionContext from "./transaction-context"
 
 const appInitialState = {
     transactions: [],
-    filteredTransactions: []
+    selectedType: 'all',
+    transactionTypes: ['income', 'expense', 'investment']
 }
 
 const appReducer = (state, action) => {
+
     switch(action.type) {
         case "ADD_TRANSACTION":
-            console.log(state)
+
             return {
                 ...state,
-                transactions: [...state.transactions, action.transaction]
+                transactions: [...state.transactions, action.transaction],
             }
 
         case "FILTER":
-
-            if(action.transactionType === "all") {
-                return {
-                ...state,
-                filteredTransactions: [...state.transactions]
-                }
-            }
-
-            const filteredTransactions = state.transactions.filter(transaction => {
-                return transaction.type === action.transactionType
-            })
-            console.log(filteredTransactions)
-
             return {
                 ...state,
-                filteredTransactions: [...filteredTransactions]
+                selectedType: action.transactionType
             }
 
         default:
@@ -42,6 +31,7 @@ const appReducer = (state, action) => {
 const TransactionProvider = (props) => {
 
     const [appState, dispatchAction] = useReducer(appReducer, appInitialState)
+    console.log(appState)
 
     const addTransactionHandler = (transaction) => {
         dispatchAction(
@@ -62,10 +52,11 @@ const TransactionProvider = (props) => {
     }
 
     const transactionsData = {
+        selectedType: appState.selectedType,
         transactions: appState.transactions,
-        filteredTransactions: appState.filteredTransactions,
         onAddTransaction: addTransactionHandler,
-        onFilterTransactions: filterTransactions
+        onFilterTransactions: filterTransactions,
+        transactionTypes: ['income', 'expense', 'investment']
     }
 
     return (

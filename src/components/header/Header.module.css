@@ -57,3 +57,19 @@ header h2{
     display: flex;
     justify-content: space-between;
 }
+
+.negative{
+    animation: pulse 0.6s linear forwards infinite;
+    color: #FAFF7F;
+    /* color: #F4D35E; */
+}
+
+@keyframes pulse {
+    50%{
+        transform: scale(1.02);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}

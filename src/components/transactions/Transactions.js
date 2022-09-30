@@ -6,35 +6,40 @@ import styles from './Transactions.module.css'
 
 const Transactions = () => {
     const appContext = useContext(TransactionContext)
-    const transactionsList = [...appContext.filteredTransactions].reverse();
-    
+
+    const transactionsList = [...appContext.transactions].reverse();
+
+    const filteredList = transactionsList.filter(transaction => {
+        if(appContext.selectedType === 'all') return transaction
+        return transaction.type === appContext.selectedType
+    })
+
+    const btns = appContext.transactionTypes.reduce((acc, curr) => {
+        return [...acc, curr]
+    }, ["all"])
 
     return (
         <article className = {styles.transactions}>
              <div className = {styles['transaction-btns']}>
-                <Button 
-                    className = "transaction-btn"
-                    onClick = {appContext.onFilterTransactions.bind(null, "all")}
-                    > All 
-                </Button>
 
-                <Button 
-                    className = "transaction-btn"
-                    onClick = {appContext.onFilterTransactions.bind(null, "income")}
-                    > Income 
-                </Button>
-
-                <Button 
-                    className = "transaction-btn"
-                    onClick = {appContext.onFilterTransactions.bind(null, "expense")}
-                    > Expenses 
-                </Button>
-
-                <Button className = "transaction-btn"> Investments </Button>
+               {
+                btns.map((btn,index) => {
+                    return <Button 
+                                key = {index}
+                                className = {`transaction-btn ${btn === appContext.selectedType && styles["active"]}`}
+                                onClick = {appContext.onFilterTransactions.bind(null, btn)}
+                                > {btn}
+                            </Button>
+                    })
+               }
             </div>
 
             {
-                transactionsList.map(transaction => (
+                filteredList.length === 0 ?
+
+                <p className = {styles.unavailable}>No Transactions Available</p> :
+
+                filteredList.map(transaction => (
                     <TransactionItem key = {transaction.id} {...transaction} /> 
                 ))
             }

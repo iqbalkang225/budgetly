@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.icon{
+.icon-box > *{
     color: var(--clr-primary);
     font-size: 20px;
 }
@@ -39,4 +39,14 @@
 .date{
     font-size: 10px;
     color: var(--clr-text-dark);
+}
+
+.price span{
+    background-color: white;
+    padding: .2rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 7px;
+    color: var(--clr-primary);
+    display: inline-block;
+    transform: translate(-0.4rem, -0.16rem);
 }

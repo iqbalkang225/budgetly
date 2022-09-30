@@ -5,6 +5,7 @@
     color: var(--clr-white);
     letter-spacing: 1px;
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 .button:hover{

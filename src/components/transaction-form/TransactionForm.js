@@ -13,12 +13,13 @@ const TransactionForm = (props) => {
         title: '',
         type: '',
         category: '',
-        date: '',
+        date: new Date().toLocaleString(),
         price: '',
 
     })
 
     const changeHandler = (e) => {
+        // console.log(formData)
         setIsFormValid(true)
 
         const {name, value} = e.target
@@ -26,7 +27,7 @@ const TransactionForm = (props) => {
         setFormData((prevState => {
             return {
                 ...prevState,
-                [name] : value,
+                [name]: name === "price" ? Number(value) : value,
                 id: Math.random()
             }
         }))
@@ -61,8 +62,8 @@ const TransactionForm = (props) => {
                         <option value="">--- Category ---</option>
                         <option value="travel">Travel</option>
                         <option value="shopping">Shopping</option>
-                        <option value="grocery">Grocery</option>
-                        <option value="bill">Bill</option>
+                        <option value="food">Food</option>
+                        <option value="rent">Rent</option>
                         <option value="other">Other</option>
                     </select>
                 </div>

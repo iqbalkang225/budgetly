@@ -6,4 +6,13 @@
 .transaction-btns{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 0.8rem;
+}
+
+.active{
+    background: var(--gradient) !important;
+}
+
+.unavailable{
+    transform: translate(22%,500%);
 }
