@@ -8,7 +8,7 @@ import TransactionContext from './store/transaction-context';
 function App() {
 
 
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openModal = () => {
     setIsModalOpen(true)
