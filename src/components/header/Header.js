@@ -1,9 +1,13 @@
 import styles from './Header.module.css'
 import '../../variables.css'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import TransactionContext from '../../store/transaction-context';
+import { BiChevronDown } from 'react-icons/bi';
+
 
 const Header = () => {
+
+    const [isShown, setIsShown] = useState(false)
 
     const appContext = useContext(TransactionContext);
 
@@ -11,12 +15,26 @@ const Header = () => {
                                             .filter(transaction => transaction.type === transactionType)
                                             .reduce((acc,curr) => acc + curr.price ,0)
 
-    const balance = (calculate('income') - calculate('expense')).toLocaleString()
+    const btcTotal = appContext.transactions
+                            .filter(transaction =>  transaction.category === 'bitcoin')
+                            .reduce((acc,curr) => acc + appContext.currentBitcoinPrice * curr.amount ,0)
+        
+    const ethTotal = appContext.transactions
+                            .filter(transaction =>  transaction.category === 'ethereum')
+                            .reduce((acc,curr) => acc + appContext.currentEthereumPrice * curr.amount ,0)
+
+    const investmentsTotal = appContext.transactions
+                            .filter(transaction =>  transaction.type === 'investment')
+                            .reduce((acc,curr) => acc + curr.price * curr.amount ,0)
+
+    const balance = ((calculate('income') + btcTotal + ethTotal) - calculate('expense')).toFixed(2).toLocaleString()
     const incomeTotal = calculate('income').toLocaleString()
     const expensesTotal = calculate('expense').toLocaleString()
-    const investmentsTotal = calculate('investment').toLocaleString()
+
+    let profitOrLoss =  (btcTotal + ethTotal) - investmentsTotal
 
     const classes = `${styles.balance} ${styles.value} ${parseInt(balance) < 0 && styles.negative}`
+    const spanClassName = profitOrLoss >= 0 ? styles.profit : styles.loss
     
     const timeOfTheDay = () => {
         const time = new Date().getHours()
@@ -25,6 +43,8 @@ const Header = () => {
         else if (time >= 12 && time <= 17) return'Good Afternoon';
         else if (time >= 17 && time <= 24) return 'Good Evening';
     }
+
+    const togglePL = () => setIsShown(prevState => !prevState)
 
 
     return (
@@ -48,8 +68,20 @@ const Header = () => {
                     </div>
 
                     <div className = {styles['card-group']}>
-                        <p className = {styles.title}>Investment</p>
-                        <p  className = {` ${styles.value}`}> ${investmentsTotal}</p>
+                        <p 
+                            className = {styles.title}>Invested 
+                            <BiChevronDown 
+                                className = {styles.icon} 
+                                onClick = {togglePL}
+                            /> </p>
+                        <p className = {` ${styles.value}`}> ${investmentsTotal.toLocaleString()}</p>
+                        {
+                            isShown &&
+                            <p className = {styles.pl}> {profitOrLoss >= 0 ? "Profit:" : "Loss"} 
+                            <span 
+                                className = {spanClassName}> ${profitOrLoss.toFixed(2)}
+                            </span> </p>
+                        }
                     </div>
                 </div>
             </div>

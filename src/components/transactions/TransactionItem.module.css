@@ -5,6 +5,7 @@
     border: 1px solid rgba(255,255,255,0.2);
     box-shadow: var(--box-shadow);
     margin: .4rem 0;
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -49,4 +50,19 @@
     color: var(--clr-primary);
     display: inline-block;
     transform: translate(-0.4rem, -0.16rem);
+}
+
+.current{
+    position: absolute;
+    bottom: 2px;
+    right: 17px;
+    font-size: 10px;
+}
+
+.profit{
+    color: greenyellow;
+}
+
+.loss{
+    color: #FAFF7F;
 }

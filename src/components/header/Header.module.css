@@ -61,8 +61,35 @@ header h2{
 .negative{
     animation: pulse 0.6s linear forwards infinite;
     color: #FAFF7F;
-    /* color: #F4D35E; */
 }
+
+.pl{
+    position: absolute;
+    bottom: 16px;
+    right: 33.3px;
+    font-size: 10px;
+}
+
+.profit{
+    color: greenyellow;
+}
+
+.loss{
+    color: #FAFF7F;
+}
+
+.icon {
+    font-size: 20px;
+    position: absolute;
+    bottom: 57px;
+    cursor: pointer;
+}
+
+.icon:hover{
+    color: var(--clr-white);
+}
+
+
 
 @keyframes pulse {
     50%{

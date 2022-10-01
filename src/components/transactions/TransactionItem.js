@@ -5,19 +5,28 @@ import { CgShoppingCart } from "react-icons/cg";
 import { RiBillLine } from "react-icons/ri";
 import { MdOutlineOtherHouses } from "react-icons/md";
 import 'animate.css';
+import {useContext} from 'react'
+import TransactionContext from '../../store/transaction-context'
 
-const TransactionItem = ( {title, type, category, date, price} ) => {
+const TransactionItem = ( {title, type, category, date, price, amount} ) => {
 
-    const dateObject = new Date(date.replace(/-/g, '\/')); 
-    const day = dateObject.toLocaleString("en-US", { day: "2-digit" });
-    const month = dateObject.toLocaleString('en-US', { month: 'short' });
-    const year = dateObject.getFullYear();
+    const appContext = useContext(TransactionContext)
+
+    const renderDate = () => {
+        const dateObject = new Date(date.replace(/-/g, '\/')); 
+        const day = dateObject.toLocaleString("en-US", { day: "2-digit" });
+        const month = dateObject.toLocaleString('en-US', { month: 'short' });
+        const year = dateObject.getFullYear();
+
+        return `${month} ${day}, ${year}`
+
+    }
 
     const symbolType = () => {
         let symbol = ""
         if(type === "expense") symbol = "-"
         if(type === "income") symbol = "+"
-        if(type === "investment") symbol =  <span>Investment</span>
+        if(type === "investment") symbol =  <span>Bought At</span>
         return symbol
     }
 
@@ -32,6 +41,9 @@ const TransactionItem = ( {title, type, category, date, price} ) => {
         return icon
     }
 
+    const currentAssetPrice = category === 'bitcoin' ? appContext.currentBitcoinPrice : appContext.currentEthereumPrice
+    const spanClassName = currentAssetPrice > price ? styles.profit : styles.loss
+
     return(
         <li className = {`animate__animated animate__flipInX ${styles['transaction-item']}`}>
             <div className = {styles['icon-box']}>
@@ -39,11 +51,16 @@ const TransactionItem = ( {title, type, category, date, price} ) => {
             </div>
 
             <div className = {styles.info}>
-                <p className = {styles.title}> {title} </p>
-                <p className = {styles.date}> {`${month} ${day}, ${year}`} </p>
+                <p className = {styles.title}> {type === "investment" ? category : title} </p>
+                <p className = {styles.date}> {renderDate()} </p>
             </div>
 
             <p className = {styles.price}> {symbolType()}${price}</p>
+
+            {
+                type === "investment" &&
+                <p className = {styles.current}> Current Price <span className = {spanClassName}> ${currentAssetPrice.toFixed(2)} </span> </p>
+            }
         </li>
     )
 }

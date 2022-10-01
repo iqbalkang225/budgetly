@@ -5,7 +5,9 @@ import styles from './TransactionForm.module.css'
 
 const TransactionForm = (props) => {
 
-    const [isFormValid, setIsFormValid] = useState(null)
+    const [inputFocus, setInputFocus] = useState(false)
+    const [typeFocus, setTypeFocus] = useState(false)
+    const [priceFocus, setPriceFocus] = useState(false)
 
     const appContext = useContext(TransactionContext)
 
@@ -15,34 +17,30 @@ const TransactionForm = (props) => {
         category: '',
         date: new Date().toLocaleString(),
         price: '',
-
+        amount: '',
     })
 
     const changeHandler = (e) => {
         // console.log(formData)
-        setIsFormValid(true)
 
         const {name, value} = e.target
 
         setFormData((prevState => {
             return {
                 ...prevState,
-                [name]: name === "price" ? Number(value) : value,
+                [name]: name === "price" || name === "amount" ? Number(value) : value,
                 id: Math.random()
             }
         }))
     }
 
-    const validateForm = () => {
-        if(!formData.title || !formData.price || !formData.type) setIsFormValid(false)
-    }
+    const inputBlurHandler = () => setInputFocus(true)
+    const typeBlurHandler = () => setTypeFocus(true)
+    const priceBlurHandler = () => setPriceFocus(true)
+
 
     const submitHandler = (e) => {
         e.preventDefault()
-
-        validateForm()
-
-        if(!isFormValid) return
         
         appContext.onAddTransaction(formData)
 
@@ -59,7 +57,7 @@ const TransactionForm = (props) => {
                         value = {formData.category}
                         onChange = {changeHandler}
                         >
-                        <option value="">--- Category ---</option>
+                        <option value="other">--- Category ---</option>
                         <option value="travel">Travel</option>
                         <option value="shopping">Shopping</option>
                         <option value="food">Food</option>
@@ -73,11 +71,12 @@ const TransactionForm = (props) => {
         if (category === 'investment') {
             return (
                 <div className = {styles['form-control']}>
-                    <label>Category</label>
+                    <label>Asset Name</label>
                     <select 
                         name="category"
                         value = {formData.category}
                         onChange = {changeHandler}
+                        required
                         >
                         <option value="">--- Choose Asset---</option>
                         <option value="bitcoin">Bitcoin</option>
@@ -94,6 +93,26 @@ const TransactionForm = (props) => {
                 <h2> Add a Transaction </h2>
 
                 <div className = {styles['form-control']}>
+                    <label>Type</label>
+                    <select 
+                        name="type"
+                        value = {formData.type}
+                        onChange = {changeHandler}
+                        required
+                        onBlur = {typeBlurHandler}
+                        focused = {typeFocus.toString()}
+                        >
+                        <option value="">--- Transation type ---</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                        <option value="investment">Investment</option>
+                        </select>
+                        <span>Please select transaction type</span>
+                </div>
+
+               {
+                formData.type !== "investment" &&
+                <div className = {styles['form-control']}>
                     <label>Title</label>
                     <input
                         type = "text"
@@ -101,22 +120,13 @@ const TransactionForm = (props) => {
                         name = "title"
                         value = {formData.title}
                         onChange = {changeHandler}
+                        onBlur = {inputBlurHandler}
+                        focused = {inputFocus.toString()}
+                        required
                     />
+                    <span>Please enter the title</span>
                 </div>
-
-                <div className = {styles['form-control']}>
-                    <label>Type</label>
-                    <select 
-                        name="type"
-                        value = {formData.type}
-                        onChange = {changeHandler}
-                        >
-                        <option value="">--- Transation type ---</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                        <option value="investment">Investment</option>
-                        </select>
-                </div>
+               }
 
                 { displayCategory(formData.type) }
 
@@ -131,7 +141,7 @@ const TransactionForm = (props) => {
                 </div>
 
                 <div className = {styles['form-control']}>
-                    <label>Price</label>
+                    <label>{formData.type === "investment" ? "Bought At" : "Price"}</label>
                     <input
                         type = "number"
                         placeholder = "Enter transaction value"
@@ -139,8 +149,30 @@ const TransactionForm = (props) => {
                         step = "0.01"
                         value = {formData.price}
                         onChange = {changeHandler}
+                        required
+                        onBlur = {priceBlurHandler}
+                        focused = {priceFocus.toString()}
                     />
+                    <span>Please enter the price</span>
                 </div>
+
+                {formData.type === "investment" &&
+                <div className = {styles['form-control']}>
+                    <label>Amount</label>
+                    <input
+                        type = "number"
+                        placeholder = "Enter assest amount"
+                        name = "amount"
+                        step = "0.01"
+                        value = {formData.amount}
+                        onChange = {changeHandler}
+                        required
+                        // onBlur = {priceBlurHandler}
+                        // focused = {priceFocus.toString()}
+                    />
+                    <span>Please enter assest amount</span>
+                </div>
+                }
 
                 <div className = {styles['form-actions']}>
                    <Button className = "form-btn" > Add Transaction </Button>

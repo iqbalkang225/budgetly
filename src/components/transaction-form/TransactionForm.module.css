@@ -33,4 +33,16 @@
     border-radius: var(--border-radius-sm);
 }
 
+.form-control span{
+    color: #FAFF7F;
+    margin-top: 0.5rem;
+    display: none;
+    font-size: 12px;
+}
+
+.form-control input:invalid[focused="true"] ~ span,
+.form-control select:invalid[focused="true"] ~ span{
+    display: block ;
+}
+
 
