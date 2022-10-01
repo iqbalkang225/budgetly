@@ -3,6 +3,7 @@ import '../../variables.css'
 import { useContext, useState } from 'react'
 import TransactionContext from '../../store/transaction-context';
 import { BiChevronDown } from 'react-icons/bi';
+import 'animate.css';
 
 
 const Header = () => {
@@ -77,7 +78,7 @@ const Header = () => {
                         <p className = {` ${styles.value}`}> ${investmentsTotal.toLocaleString()}</p>
                         {
                             isShown &&
-                            <p className = {styles.pl}> {profitOrLoss >= 0 ? "Profit:" : "Loss"} 
+                            <p className = {`${styles.pl} animate__animated animate__backInDown`}> {profitOrLoss >= 0 ? "Profit:" : "Loss"} 
                             <span 
                                 className = {spanClassName}> ${profitOrLoss.toFixed(2)}
                             </span> </p>
