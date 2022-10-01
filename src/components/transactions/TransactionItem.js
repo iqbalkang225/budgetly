@@ -51,7 +51,12 @@ const TransactionItem = ( {title, type, category, date, price, amount} ) => {
             </div>
 
             <div className = {styles.info}>
-                <p className = {styles.title}> {type === "investment" ? category : title} </p>
+                <p className = {styles.title}> 
+                    {type === "investment" ? category : title} 
+                    {
+                        type === 'investment' && <span className = {styles['asset-amount']} >x {amount}</span>
+                    }
+                </p>
                 <p className = {styles.date}> {renderDate()} </p>
             </div>
 

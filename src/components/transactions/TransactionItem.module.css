@@ -66,3 +66,9 @@
 .loss{
     color: #FAFF7F;
 }
+
+.asset-amount{
+    margin-left: .2rem;
+    font-size: 10px;
+    padding: .2rem;
+}
