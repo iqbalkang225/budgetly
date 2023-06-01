@@ -1,102 +1,100 @@
 @import '../../variables.css';
 
 header {
-    padding: 2rem 0;
+  padding: 2rem 0;
 }
 
-header h2{
-    margin-bottom: 1.8rem;
+header h2 {
+  margin-bottom: 1.8rem;
 }
 
-.card{
-    background: linear-gradient(135deg,rgba(255,255,255,0.1), rgba(255,255,255,0.5));
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: var(--box-shadow);
-    backdrop-filter: blur(10px);
+.card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--box-shadow);
+  backdrop-filter: blur(10px);
 }
 
-.card::before{
-    content: '';
-    height: 90%;
-    width: 90%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to right, var(--clr-primary), var(--clr-secondary));
-    z-index: -1;
-    transform: rotate(-5deg) translate(20px, -5px);
-    filter: blur(4px); 
-    border-radius: var(--border-radius-lg);
-    opacity: .6;
+.card::before {
+  content: '';
+  height: 90%;
+  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, var(--clr-primary), var(--clr-secondary));
+  z-index: -1;
+  transform: rotate(-5deg) translate(20px, -5px);
+  filter: blur(4px);
+  border-radius: var(--border-radius-lg);
+  opacity: 0.6;
 }
 
-.card > :nth-child(1){
-    margin-bottom: 2.6rem;
+.card > :nth-child(1) {
+  margin-bottom: 2.6rem;
 }
 
-.title{
-    color: var(--clr-text-dark);
-    font-size: 12px;
-    margin-bottom: .1rem;
+.title {
+  color: var(--clr-text-dark);
+  font-size: 12px;
+  margin-bottom: 0.1rem;
 }
 
-.balance{
-    font-size: 24px !important;
+.balance {
+  font-size: 24px !important;
 }
 
-.value{
-    color: var(--clr-white);
-    font-weight: 600;
-    font-size: 16px;
+.value {
+  color: var(--clr-white);
+  font-weight: 600;
+  font-size: 16px;
 }
 
-.card-group-box{
-    display: flex;
-    justify-content: space-between;
+.card-group-box {
+  display: flex;
+  justify-content: space-between;
 }
 
-.negative{
-    animation: pulse 0.6s linear forwards infinite;
-    color: #FAFF7F;
+.negative {
+  animation: pulse 0.6s linear forwards infinite;
+  color: #faff7f;
 }
 
-.pl{
-    position: absolute;
-    bottom: 16px;
-    right: 33.3px;
-    font-size: 10px;
+.pl {
+  position: absolute;
+  bottom: 16px;
+  right: 33.3px;
+  font-size: 10px;
 }
 
-.profit{
-    color: greenyellow;
+.profit {
+  color: greenyellow;
 }
 
-.loss{
-    color: #FAFF7F;
+.loss {
+  color: #faff7f;
 }
 
 .icon {
-    font-size: 20px;
-    position: absolute;
-    bottom: 57px;
-    cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  bottom: 57px;
+  cursor: pointer;
 }
 
-.icon:hover{
-    color: var(--clr-white);
+.icon:hover {
+  color: var(--clr-white);
 }
-
-
 
 @keyframes pulse {
-    50%{
-        transform: scale(1.02);
-    }
+  50% {
+    transform: scale(1.02);
+  }
 
-    100%{
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }

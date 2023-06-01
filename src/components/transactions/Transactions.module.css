@@ -1,18 +1,19 @@
-.transactions{
-    overflow-y: scroll;
-    height: 335px;
+.transactions {
+  overflow-y: scroll;
+  height: 335px;
 }
 
-.transaction-btns{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 0.8rem;
+.transaction-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.8rem;
 }
 
-.active{
-    background: var(--gradient) !important;
+.active {
+  background: var(--gradient) !important;
 }
 
-.unavailable{
-    transform: translate(22%,500%);
+.unavailable {
+  transform: translateY(500%);
+  text-align: center;
 }

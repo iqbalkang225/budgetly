@@ -1,7 +1,7 @@
 @import './variables.css';
 
-.app{
-  width: 400px;
+.app {
+  width: 28vw;
   background-color: var(--clr-background);
   min-height: 95vh;
   position: relative;
