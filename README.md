@@ -4,7 +4,9 @@
 <img src="https://socialify.git.ci/iqbalkang225/iqbal-kang-225-spentt/image?language=1&name=1&owner=1&theme=Light"/>
 </p>
 
-<p id="description">A budget tracking app to help you stay in control of your finances! With this app you'll be able to keep track of your expenses set budgets and gain valuable insights into your spending habits so you can make smart decisions about your money. This is a front-end application designed to provide a practical learning experience. The primary goal was to gain a deeper understanding of web development and to create a functional and well-designed application from scratch.</p>
+<p id="description">A budget tracking app to help you stay in control of your finances! With this app you'll be able to keep track of your expenses set budgets and gain valuable insights into your spending habits so you can make smart decisions about your money. 
+  
+This is a front-end application designed to provide a practical learning experience. The primary goal was to gain a deeper understanding of web development and to create a functional and well-designed application from scratch.</p>
 
 <h2>🚀 Hosted At</h2>
 
