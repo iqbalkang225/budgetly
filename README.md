@@ -34,15 +34,15 @@ Technologies used in the project:
 
 <h2>Project Screenshots</h2>
 
-<img src="https://res.cloudinary.com/dydbhumso/image/upload/v1685742968/lowbalancealerts_pm0tfj.png" alt="project-screenshot" width="800" height="450/">
+<img src="https://spentt-links.s3.amazonaws.com/lowbalancealerts.png" alt="project-screenshot" width="800">
 
-<img src="https://res.cloudinary.com/dydbhumso/image/upload/v1685742968/liveassetpricing_ozjwle.png" alt="project-screenshot" width="800" height="450/">
+<img src="https://spentt-links.s3.amazonaws.com/liveassetpricing.png" alt="project-screenshot" width="800" >
 
-<img src="https://res.cloudinary.com/dydbhumso/image/upload/v1685742968/crunchinglossdata_qfypvi.png" alt="project-screenshot" width="800" height="450/">
+<img src="https://spentt-links.s3.amazonaws.com/managefinancialgroups.png" alt="project-screenshot" width="800" >
 
-<img src="https://res.cloudinary.com/dydbhumso/image/upload/v1685742968/insightfulinvestmentgains_mfhqve.png" alt="project-screenshot" width="800" height="450/">
+<img src="https://spentt-links.s3.amazonaws.com/insightfulinvestmentgains.png" alt="project-screenshot" width="800" >
 
-<img src="https://res.cloudinary.com/dydbhumso/image/upload/v1685742968/managefinancialgroups_jlskao.png" alt="project-screenshot" width="800" height="450/">
+<img src="https://spentt-links.s3.amazonaws.com/crunchinglossdata.png" alt="project-screenshot" width="800">
 
 <h2>Conclusion</h2>
 While working on this project I faced some obstacles which allowed me to dive deeper into the complexities of web development and broaden my skill set. With this project I learnt creating reusable react components and manage the app state. Through this project, I gained a better understanding of Single Page Application development.
