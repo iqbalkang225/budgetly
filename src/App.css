@@ -2,6 +2,7 @@
 
 .app {
   width: 28vw;
+  min-width: 400px;
   background-color: var(--clr-background);
   min-height: 95vh;
   position: relative;
